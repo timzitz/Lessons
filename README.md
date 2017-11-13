@@ -112,13 +112,13 @@ variablen:
 
 		          	||
 		      _______________________
-		       |  Element		        |
-		       |<Objekte> 		      |
-		       |  Name String:    	|
+		       |  Element	    |
+		       |<Objekte> 	    |
+		       |  Name String:      |
 		       |  Wert(Divisor) int:|
-           |____________________|
+          	       |____________________|
 
-			       Currency
+			Currency
 		      ------------
 	Definition: Element [Array] (Reihenfolge ist WICHTIG)
 			
@@ -174,13 +174,13 @@ _______________________________________________________________________
 
 		        	|Lösung|
 		       _______________________
-		       |  Element		        |
-		       |<Objekte> 		      |
-		       |  Name String:    	|
+		       |  Element	    |
+		       |<Objekte> 	    |
+		       |  Name String:      |
 		       |  Wert(Divisor) int:|
-           |____________________|
+           	       |____________________|
 
-			      Currency
+			 Currency
 		      ------------
 	Definition: Element [Array] (Reihenfolge ist WICHTIG)
 			
