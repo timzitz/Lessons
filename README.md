@@ -78,27 +78,42 @@ verdienst 15-26k Euro
 Software Engineer:
 
 erarbeitet modelle testfälle konzepte
+
 involviert in projektmanagmet, Anforderungsmanagment und QA
+
 wie der Entwickler involviert in Coding, Testing und Entwicklung
+
 Arbeitet auf höherem Abstraktionsniveau
+
 gehalt: 40 - 66k Euro
 
 Software Architekt:
 
 trifft grundlegende Entscheidungen
+
 Konzipiert bei großen Projekten Systeme und das Zusammenspiel der Komponenten
+
 arbeitet auf nochmals höherem Abstraktionsniveau
+
 Arebiette potentiell projekt-,team- systemübergreifend
+
 Gehalt: 36-55k Euro
 
 
 Projektplanung
+
 Anforderungs Management
+
 Risiko Management
+
 Teamorganisiation
+
 Code Design
+
 Testing
+
 Deplyment (wie baue ich meine software aus)
+
 Wartung & Lifecycle Management 
 
 
