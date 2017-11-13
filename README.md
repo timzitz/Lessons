@@ -70,10 +70,16 @@ Softwaretechnik
 _______________________________________________________________________
 
 Entwickler: 
+
 setzen konkrete vorgaben um
+
 arbeiten problemorientiert
+
 zumeist reine coder 
+
 verdienst 15-26k Euro
+
+_______________________________________________________________________
 
 Software Engineer:
 
@@ -87,6 +93,9 @@ Arbeitet auf höherem Abstraktionsniveau
 
 gehalt: 40 - 66k Euro
 
+_______________________________________________________________________
+
+
 Software Architekt:
 
 trifft grundlegende Entscheidungen
@@ -99,6 +108,7 @@ Arebiette potentiell projekt-,team- systemübergreifend
 
 Gehalt: 36-55k Euro
 
+_______________________________________________________________________
 
 Projektplanung
 
@@ -116,6 +126,7 @@ Deplyment (wie baue ich meine software aus)
 
 Wartung & Lifecycle Management 
 
+_______________________________________________________________________
 
 Bitmask
 
