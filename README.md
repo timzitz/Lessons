@@ -293,3 +293,108 @@ _______________________________________________________________________
         }
     }
 _______________________________________________________________________
+_______________________________________________________________________
+_______________________________________________________________________
+_______________________________________________________________________
+_______________________________________________________________________
+
+
+
+20.11.2017 Hummes
+
+__________________________________________________________________________________
+
+"for( ; n > 0; c++, n&=(n-1)){}"
+
+das ";" hinter dem for, darf weg gelassen werden, da keine gegebene häufigkeit des schleifendruchlaufs gegeben ist. 
+
+Bit weise Und = &
+schnelle möglichkeit für die CPU
+
+__________________________________________________________________________________
+
+!!!!!!!!!!!!!!!!!!!Erste Abgabe 07.12.2017 23:59 Uhr!!!!!!!!!!!!!!!!!!!!
+
+
+Thema: WeightedPicker
+Problemstellung: Arbeiten mit gewichteten Wahrscheinlichkeiten
+		 Spawning von Gegnern mit unterschiedlicher Häufigkeit("Rare-Mobs")
+		 Erzeugen von Item-Drops mit unterschiedlichen Häufigkeiten("Epic-Loot")
+
+Aufgabenstellung:
+Programmiert eine Datenstruktur, die Elemente mit einem zugeordneten Wert aufnehmen kann.
+Intern werden die Werte in passender Relation umgerechnet. ein Pick()-Methode
+liefert dann ein zufälliges Element unter der Berücksichtigung der relativen Wahrscheinlichkeit.
+
+
+
+Tipp:
+Mit Zahlenwerten Prüfen, doch am ende zahlen durch variable "T" ersetzen
+
+ public static class Helper
+    {
+        public static void Shuffle<T>( this T[] array)
+        {
+            int n = array.Length;
+            Random random = new Random();
+            for(int i = 0; i < n; i++)
+            {
+                int r = i + random.Next(n - i);
+                T t = array[r];
+                array[r] = array[i];
+                array[i] = t;
+                   
+            }
+        }
+    }
+
+
+
+__________________________________________________________________________________
+
+
+
+__________________________________________________________________________________
+
+Conways Game of Life:
+
+1. Feld erzeugen mehrdemansionales Array
+
+2. Zellen erzeugen welche leben und sterben (Boole true, false)
+	wenn die Zelle lebt steht sie auf "true" und wird mit einem Wert oder einem Zeichen ausgegeben. z.B. "o". Auf "false" wird
+	nichts angezeigt.
+
+	2.1. die Regeln:        Eine leere Zelle mit 2 lebenden Nachbarn wird in der Folgegeneration neu geboren.
+        			Eine lebende Zelle mit weniger als zwei lebenden Nachbarn stirbt in der Folgegeneration an Einsamkeit.
+        			Eine lebende Zelle mit zwei oder drei lebenden Nachbarn bleibt in der Folgegeneration unverändert.
+        			Lebende Zellen mit mehr als drei lebenden Nachbarn sterben in der Folgegeneration an Überbevölkerung. 
+
+__________________________________________________________________________________
+
+Mitschrift Tafel
+Board erstellen
+	Fill
+	Rendern
+	while(true)
+		für JEDES einzelne Feld, Anzahl der Nachbarn bestimmen == Move/Update
+		-> Zelle lebt/stirbt 
+		Flip (Nächste Generation wird zur Aktuellen und umgekehrt)
+		Render
+		(ResetCursor)
+
+Console
+		
+
+__________________________________________________________________________________
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!Nacharbeiten!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+__________________________________Code____________________________________________
+
+
+
+
+
+
+
+
+
