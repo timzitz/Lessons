@@ -399,7 +399,9 @@ Shader Hard Surface
 Code: 
 
 Shader "Silhouette"
+
 {
+
 	Properties
 	{
 		_Color("Color", Color) = (1, 1, 1, 0.5)
