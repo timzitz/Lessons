@@ -1,0 +1,201 @@
+Lösung Dozent: 
+public static bool IsFullHouse(int[] numbers)
+        {
+            return numbers.GroupBy(i => i).Any(g => g.Count() == 3
+                                                    && numbers.GroupBy(i => i).Any(g1 => g1.Count() == 2));
+        }
+ 
+        public static bool IsThrees(int[] numbers)
+        {
+            return numbers.GroupBy(i => i).Any(g => g.Count() == 3);
+        }
+ 
+        public static bool IsFours(int[] numbers)
+        {
+            return numbers.GroupBy(i => i).Any(g => g.Count() == 4);
+        }
+ 
+        public static bool IsYatzhee(int[] numbers)
+        {
+            return numbers.Distinct().Count() == 1;
+        }
+ 
+        public static bool IsLargeStraight(int[] numbers)
+        {
+            return numbers.OrderBy(n => n).Select((a, b) => b - a).Distinct().Count() == 1;
+        }
+ 
+        public static bool IsSmallStraight(int[] numbers)
+        {
+            numbers = numbers.Distinct().OrderBy(n => n).ToArray();
+            return numbers.Take(numbers.Length - 1)
+                .Select((a, b) => numbers[b + 1] - a)
+                .SkipWhile(x => x != 1)
+                .TakeWhile(x => x == 1)
+                .Count() >= 3;
+        }
+       
+_______________________________________________________________________________________________________________________
+
+
+Mein Code 27.11.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Vorlesung_27._11
+{
+    
+    class Program
+    {
+
+        public class Item : Object
+        {
+            public string Name;
+            public int Wert;
+            public int Gewicht;
+            public int Level;
+
+            public Item(string name, int wert, int gewicht, int level)
+            {
+                Name = name;
+                Wert = wert;
+                Gewicht = gewicht;
+                Level = level;
+            }
+
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+
+       
+
+
+
+        static void Main(string[] args)
+        {
+
+
+
+            //_____________________________________________________________Items Sortieren_______________________________________________________________________________________________________________
+            List<Item> items = new List<Item>();
+            items.Add(new Item("Obsidian Box", 93, 15, 5));
+            items.Add(new Item("Dominion Door", 22, 33, 8));
+            items.Add(new Item("Mirage Sword", 44, 7, 1));
+            items.Add(new Item("Book of Lust", 34, 8, 2));
+            items.Add(new Item("Lamp of Courage", 99, 3, 12));
+            items.Add(new Item("Dread Pillar", 82, 21, 2));
+            items.Add(new Item("Aurora Key", 35, 9, 4));
+            items.Add(new Item("Shield of Corruption", 63, 96, 1));
+            items.Add(new Item("Band of Evil", 3, 2, 5 ));
+            items.Add(new Item("Baby Unicorn", 432, 3, 9));
+
+            //schreibe eine LINQ-Query (einzeilig) die folgendes ermittelt: 
+            // Gewicht aller Items
+            // Durchschnittslevel aller Items
+            // Zweitteuerstes Item
+            // Gewicht aller Items mit überdurchschnittlichem Wert
+            // Alle Level, für die Items vorhanden sind (Sortiert)
+            // Liste aller Itemnamen
+            // Alle Items deren Namen kürzer als 5 Zeichen ist 
+            // Gibt es ein Item mit Wert > 10 
+            // haben alle Items ein gewicht >= 2 
+
+            Console.WriteLine("Gesamtgewicht:\n" + items.Sum(i => i.Gewicht) + "\n");
+            Console.WriteLine("Durchschnittslevel:\n" + items.Average(i => i.Level) + "\n");
+
+            Console.WriteLine("Zweitteuerste Item: " + items.OrderByDescending(i => i.Wert).ElementAt(1) + "\n");
+            Console.WriteLine("Zweitteuerste Item: " + items.OrderByDescending(i => i.Wert).Take(2).Last() + "\n");
+            Console.WriteLine("Zweitteuerste Item: " + items.OrderByDescending(i => i.Wert).Skip(1).First() + "\n");
+            Console.WriteLine("Zweitteuerste Item: " + items.OrderByDescending(i => i.Wert).Skip(1).ToList()[0] + "\n");
+            Console.WriteLine("Zweitteuerste Item: " + items.OrderByDescending(i => i.Wert).ToList()[1] + "\n");
+
+            Console.WriteLine("Gewicht aller Items mit überdurchschnittlicher Wert :\n" + string.Join(",", items.Where(i => i.Gewicht > items.Average(j => j.Gewicht)).Select(i => i.Gewicht)) + "\n"); 
+            Console.WriteLine("Alle Level für die Items vorhanden sind :\n" + string.Join(",", items.Select(i => i.Level).OrderBy(x => x).Distinct()));
+            Console.WriteLine("Liste aller Itemnamen:\n" + string.Join(",\n", items.OrderBy(i => i.Name)) + "\n");
+            Console.WriteLine("Alle Items deren Name kürzer als 12 Zeichen ist :\n" + string.Join(",\n", items.Where(i => i.Name.Length <= 10).OrderBy(i => i.Name)) + "\n");
+            Console.WriteLine("Gibt es ein Item mit Wert > 10 :\n" + items.Any(i => i.Wert > 10) + "\n");
+            Console.WriteLine("Haben alle Items ein Gewicht >= 2? :\n" + items.All(i => i.Gewicht >= 2) + "\n");
+            //_____________________________________________________________________________________________________________________________________________________________________________________________
+
+
+
+
+            //_________________________________________________________________Kniffel Analyse_____________________________________________________________________________________________________________
+            //Yahtzee = alle zahlen gleiche Augenzahl
+            //Dreierpasch = Genau Drei gleichen augenzahlen
+            //Viererpasch = GENAU vier gleiche augenzahlen
+            //Full House = 3 gleiche und 2 gleiche augenzahlen
+            //Große Straße
+            //kleine Straße
+
+            int[] numbers = {1, 2, 1, 1, 5};
+
+            Console.WriteLine("Yahtzee:\t" + numbers.All(n => numbers[0] == n));
+            Console.WriteLine("Dreierpasch:\t" + numbers.GroupBy(n => n).Any(g => g.Count() == 3));
+            Console.WriteLine("Viererpasch:\t" + numbers.GroupBy(n => n).Any(g => g.Count() == 4));
+            Console.WriteLine("Full House:\t" + numbers.GroupBy(i => i).Any(g => g.Count() == 3
+                                                && numbers.GroupBy(i => i).Any(g1 => g1.Count() == 2)));
+            /*Console.WriteLine("Große Straße:\t" + numbers.OrderBy(n => n).Select((a, b) => b - a).Distinct().Count() == 1;
+            Console.WriteLine("Kleine Straße:\t" + numbers.);
+            numbers = numbers.Distinct().OrderBy(n => n).ToArray();
+            return numbers.Take(numbers.Length - 1)
+                .Select((a, b) => numbers[b + 1] - a)
+                .SkipWhile(x => x != 1)
+                .TakeWhile(x => x == 1)
+                .Count() >= 3;*/
+            //_____________________________________________________________________________________________________________________________________________________________________________________________
+
+            //Higher Order Programming
+            //Lambda-Expression
+            //Deferred Execution
+            items.Where(i => i.Wert > 20); //Filter
+            items.OrderBy(i => i.Name);     // Sortierung
+            items.Select(i => i.Name);       //Transformation / Auswahl
+            items.Sum(i => i.Wert);
+            items.Any(i => i.Wert > 50);
+            items.All(i => i.Wert > 50);
+
+            //_____________________________________________________________________________________________________________________________________________________________________________________________
+
+            foreach (Item item in items.Where(i => i.Wert > 20).OrderBy(i => i.Name))
+            {
+
+            }
+
+            /* 
+            items.OrderBy(i => i.Value > 20); //alles sortieren mit dem Wert größer als 20. ". items.OrderBy(i => i.Value);" dahinter und es wird gleichzeitig noch nach Namen sortiert
+            items.OrderBy(i => i.Value); //"Value" kann einfach durch "Name" ersetzt werden und schon wird es nach den Namen sortiert 
+            items.OrderBy(Sortierung); //ist das Selbe wie "items.OrderBy(i => i.Value);"
+            */
+
+
+            /*
+            List<int> texts = new List<int>() {4, 5, 2, 3, 1};
+            List<string> texts = new List<string>() {"A", "E", "B", "D", "C" };
+            numbers.BubbleSort();
+            texts.BubbleSort();
+            Console.WriteLine(string.Join(",", numbers));
+            Console.WriteLine(string.Join(",", texts));
+            */
+
+
+
+            Console.ReadKey();
+            return;
+
+
+        }
+
+        public static int Sortierung(Item item)
+        {
+            return item.Wert;
+        }
+    }
+}
