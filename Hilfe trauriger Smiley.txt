@@ -35,14 +35,14 @@ namespace Abgabe_Picker_Tim_Zitz
 
             Random rnd = new Random(); //random zahl wird generiert
             
-            int erg = 0; //zwischen speicher für die Summe der Probability
+            int erg = 0; //zwischen speicher fÃ¼r die Summe der Probability
             
-            //if (erg )
-            for (int i =0, i < List.Length; i++) //schleife um das Item aus dem Array zu picken, welches als nächstes + Erg gerechnet werden soll
+            
+            for (int i =0, i < List.Length; i++) //schleife um das Item aus dem Array zu picken, welches als nÃ¤chstes + Erg gerechnet werden soll
             {
 
 
-                while (erg < rnd) //schleife solange das Ergebniss kleiner als die Rnd zahl ist wird diese schleife weiterhin ausgeführt
+                while (erg < rnd) //schleife solange das Ergebniss kleiner als die Rnd zahl ist wird diese schleife weiterhin ausgefÃ¼hrt
                 {
                     //erg += probability 
                 }
@@ -51,10 +51,10 @@ namespace Abgabe_Picker_Tim_Zitz
 
             /* die items werden mit einer probability generiert
                danach wird eine random zahl generiert 
-               | in der schleife wird geprüft ob die rnd zahl kleiner 
+               | in der schleife wird geprÃ¼ft ob die rnd zahl kleiner 
                als die Summe der probabilitys ist. Diese wird bei jedem durchlauf 
-               geprüft und immer wieder mit der nächsten Probability aufsummiert, bis 
-               das ergebnis (erg) größer oder gleich die rnd zahl ist. Ist das der Fall
+               geprÃ¼ft und immer wieder mit der nÃ¤chsten Probability aufsummiert, bis 
+               das ergebnis (erg) grÃ¶ÃŸer oder gleich die rnd zahl ist. Ist das der Fall
                so wird das letzte summierte Item ausgegeben*/
 
 
