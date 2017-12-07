@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Abgabe_Picker_Tim_Zitz
+{
+    class Program
+    {
+
+        public class Item
+        {
+            public string Name;
+            public int probability;
+
+            public Item(string name, int probability)
+            {
+                Name = name;
+                this.probability = probability;
+            }
+
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+        static void Main(string[] args)
+        {
+
+            List<Item> items = new List<Item>(); //items werden generiert
+            items.Add(new Item("Beispiel Item 1", 20));
+            items.Add(new Item("Beispiel Item 2", 40));
+            items.Add(new Item("Beispiel Item 3", 40));
+
+            Random rnd = new Random(); //random zahl wird generiert
+            
+            int erg = 0; //zwischen speicher für die Summe der Probability
+            
+            //if (erg )
+            for (int i =0, i < List.Length; i++) //schleife um das Item aus dem Array zu picken, welches als nächstes + Erg gerechnet werden soll
+            {
+
+
+                while (erg < rnd) //schleife solange das Ergebniss kleiner als die Rnd zahl ist wird diese schleife weiterhin ausgeführt
+                {
+                    //erg += probability 
+                }
+            }
+
+
+            /* die items werden mit einer probability generiert
+               danach wird eine random zahl generiert 
+               | in der schleife wird geprüft ob die rnd zahl kleiner 
+               als die Summe der probabilitys ist. Diese wird bei jedem durchlauf 
+               geprüft und immer wieder mit der nächsten Probability aufsummiert, bis 
+               das ergebnis (erg) größer oder gleich die rnd zahl ist. Ist das der Fall
+               so wird das letzte summierte Item ausgegeben*/
+
+
+
+        }
+    }
+}
