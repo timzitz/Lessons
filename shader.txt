@@ -1,0 +1,90 @@
+SHADER:
+__________________
+
+Shader "Custom/Shieldeffect" {
+     Properties {
+         _Position ("Collision", Vector) = (0, 0, 0, 0)
+         _MaxDistance ("Effect Size", float) = 40
+         _Amount ("Extrusion Amount", Range(-1,1)) = 0.5
+         _Color ("Color (RGBA)", Color) = (0.7, 1, 1, 0.2)
+     }
+     SubShader {
+         Tags { "Queue" = "Transparent" "RenderType" = "Transparent" }
+         LOD 2000
+         Cull Off
+       
+         CGPROGRAM
+           #pragma surface surf Lambert vertex:vert alpha
+           #pragma target 3.0
+       
+          struct Input {
+             float4 mycolor : COLOR;
+             float3 worldPos;
+           };
+       
+           float _Amount;
+           float4 _Color;  
+           float4 _Position;
+           float _MaxDistance;  
+           float myDist;  
+       
+           void vert (inout appdata_full v) {
+               //if(distance(_Position.xyz, v.vertex.xyz)<_MaxDistance){
+                   v.vertex.xyz += v.normal * _Amount * sin(_Time);
+             //}
+           }
+       
+           void surf (Input IN, inout SurfaceOutput o) {
+             o.Albedo = _Color.rgb;
+             myDist = distance(_Position.xyz, IN.worldPos);
+             if(myDist < _MaxDistance){
+                   o.Alpha = abs(sin(_Time * 8)) - (myDist / _MaxDistance);
+                   if(o.Alpha < 0.2){
+                       o.Alpha = 0.2;
+                   }
+               }
+               else {
+                   o.Alpha = 0.2;
+               }
+           }
+       
+           ENDCG
+     } 
+     Fallback "Transparent/Diffuse"
+ }
+
+
+
+
+_________________________________________________________________________________________________
+_________________________________________________________________________________________________
+
+
+Script: 
+
+
+#pragma strict
+ 
+ var EffectTime : float;
+ function Update(){
+     if(EffectTime>0){
+         if(EffectTime < 450 && EffectTime > 400){
+             renderer.sharedMaterial.SetVector("_ShieldColor", Vector4(0.7, 1, 1, 0));
+         }        
+         
+         EffectTime-=Time.deltaTime * 1000;
+         
+         renderer.sharedMaterial.SetFloat("_EffectTime", EffectTime);
+     }
+ }
+     
+ function OnCollisionEnter(collision : Collision) {
+         for (var contact : ContactPoint in collision.contacts) {
+         
+             renderer.sharedMaterial.SetVector("_ShieldColor", Vector4(0.7, 1, 1, 0.05));
+             
+             renderer.sharedMaterial.SetVector("_Position", transform.InverseTransformPoint(contact.point));
+             
+             EffectTime=500;
+         }
+ }
